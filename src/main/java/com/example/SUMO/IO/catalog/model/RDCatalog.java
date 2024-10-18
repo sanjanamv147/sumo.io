@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "rd_catalog")
@@ -22,12 +23,12 @@ public class RDCatalog {
     private String containerId;
     private String uploadedBy;
     private LocalDate dateUploaded;
-
     private String rdName;
     private Long rdSize;
     private String calName;
     private Long calSize;
     private String testReport;
     private String releaseNotes;
-
+    @Column(nullable = false)
+    private LocalDateTime releaseDate;
 }
