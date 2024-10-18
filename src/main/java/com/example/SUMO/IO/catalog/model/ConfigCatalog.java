@@ -16,14 +16,12 @@ public class ConfigCatalog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String ecuName;
     private String configType;
     private String version;
     private String containerId;
     private String uploadedBy;
     private LocalDate dateUploaded;
-
     private String configName;
     private Long configSize;
     private String calName;
@@ -32,5 +30,4 @@ public class ConfigCatalog {
     private String releaseNotes;
     @Column(nullable = false)
     private LocalDateTime releaseDate;
-
 }

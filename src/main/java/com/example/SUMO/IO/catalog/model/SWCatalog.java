@@ -2,6 +2,7 @@ package com.example.SUMO.IO.catalog.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sw_catalog")
@@ -24,6 +25,6 @@ public class SWCatalog {
     private Long calSize;
     private String testReport;
     private String releaseNotes;
-
-    // Getters and Setters
+    @Column(nullable = false)
+    private LocalDateTime releaseDate;
 }

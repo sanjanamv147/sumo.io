@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -44,5 +45,25 @@ public class SWCatalogController {
         // Logic to download Test Report or Release Notes
         // You will have to handle file download logic here based on fileType
         return ResponseEntity.ok("File downloaded: " + fileType);
+    }
+
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<SWCatalog>> filterSWCatalog(
+            @RequestParam(value = "ecuName", required = false) String ecuName,
+            @RequestParam(value = "version", required = false) String version,
+            @RequestParam(value = "releaseDate", required = false) LocalDateTime releaseDate) {
+
+        List<SWCatalog> filteredList = swCatalogService.filterSWCatalog(ecuName, version, releaseDate);
+        return ResponseEntity.ok(filteredList);
+    }
+
+    @GetMapping("/sort")
+    public ResponseEntity<List<SWCatalog>> sortSWCatalog(
+            @RequestParam(value = "sortBy", defaultValue = "uploadDateTime") String sortBy,
+            @RequestParam(value = "ascending", defaultValue = "true") boolean ascending) {
+
+        List<SWCatalog> sortedSoftwareList = swCatalogService.sortSWCatalog(sortBy, ascending);
+        return ResponseEntity.ok(sortedSoftwareList);
     }
 }
