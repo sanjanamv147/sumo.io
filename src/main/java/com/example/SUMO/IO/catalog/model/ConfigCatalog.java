@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "config_catalog")
@@ -29,5 +30,7 @@ public class ConfigCatalog {
     private Long calSize;
     private String testReport;
     private String releaseNotes;
+    @Column(nullable = false)
+    private LocalDateTime releaseDate;
 
 }
